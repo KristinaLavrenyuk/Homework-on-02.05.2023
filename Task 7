@@ -1,0 +1,69 @@
+ 
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+ 
+int main()
+{
+    int t;
+    cin >> t;
+ 
+    vector<bool> ans;
+ 
+    int n;
+    int cou{};
+    string s;
+    string meow;
+ 
+    for (int i = 0; i < t; i++)
+    {
+        cin >> n;
+        cin >> s;
+        meow = "                                                  ";
+        if (n < 4) ans.push_back(0);
+        else
+        {
+            while (s[cou] == 'M' || s[cou] == 'm')
+            {
+                cou++;
+                meow[0] = 'm';
+            }
+            if (s[cou] == 'E' || s[cou] == 'e')
+            {
+                while (s[cou] == 'E' || s[cou] == 'e')
+                {
+                    cou++;
+                    meow[1] = 'e';
+                }
+                if (s[cou] == 'O' || s[cou] == 'o')
+                {
+                    while (s[cou] == 'O' || s[cou] == 'o')
+                    {
+                        cou++;
+                        meow[2] = 'o';
+                    }
+                    if (s[cou] == 'W' || s[cou] == 'w')
+                    {
+                        while (s[cou] == 'W' || s[cou] == 'w')
+                        {
+                            cou++;
+                            meow[3] = 'w';
+                        }
+                        if (cou != n) meow = ' ';
+                    }
+                }
+            }
+            if (meow == "meow                                              ") ans.push_back(1);
+            else ans.push_back(0);
+            cou = 0; 
+        }
+    }
+ 
+    for (int i = 0; i < t; i++)
+    {
+        if (ans[i] == 0) cout << "NO" << endl;
+        else cout << "YES" << endl;
+    }
+    system("pause");
+}
